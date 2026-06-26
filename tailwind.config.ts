@@ -27,11 +27,11 @@ export default {
         hairline: "hsl(var(--hairline))",
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        display: ["Fraunces", "Times New Roman", "serif"],
-        mono: ["JetBrains Mono", "ui-monospace", "monospace"],
+        sans: ['"Helvetica Now Text"', '"Helvetica Neue"', '"Inter Tight"', "Helvetica", "Arial", "sans-serif"],
+        display: ['"Helvetica Now Display"', '"Helvetica Neue"', '"Inter Tight"', "Helvetica", "Arial", "sans-serif"],
+        mono: ['"JetBrains Mono"', "ui-monospace", "monospace"],
       },
-      letterSpacing: { tightest: "-0.04em", tighter: "-0.03em" },
+      letterSpacing: { tightest: "-0.055em", tighter: "-0.035em" },
       borderRadius: { lg: "var(--radius)", md: "0", sm: "0" },
       boxShadow: { editorial: "var(--shadow-editorial)" },
       keyframes: {

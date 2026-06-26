@@ -5,22 +5,35 @@ import fabric from "@/assets/fabric.jpg";
 import embroidery from "@/assets/embroidery.jpg";
 import collar from "@/assets/collar.jpg";
 import hoodie from "@/assets/hoodie.jpg";
-import process from "@/assets/process.jpg";
+import processImg from "@/assets/process.jpg";
 import team from "@/assets/team.jpg";
 import tshirts from "@/assets/tshirts.jpg";
 import accessories from "@/assets/accessories.jpg";
 
 /* ——— Primitives ——— */
 
-const Reveal = ({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) => {
+const Reveal = ({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) => {
   const ref = useRef<HTMLDivElement>(null);
   const [shown, setShown] = useState(false);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     const io = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setShown(true); io.disconnect(); } },
-      { threshold: 0.15 }
+      ([e]) => {
+        if (e.isIntersecting) {
+          setShown(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.12 }
     );
     io.observe(el);
     return () => io.disconnect();
@@ -31,8 +44,8 @@ const Reveal = ({ children, delay = 0, className = "" }: { children: React.React
       className={className}
       style={{
         opacity: shown ? 1 : 0,
-        transform: shown ? "translateY(0)" : "translateY(28px)",
-        transition: `opacity 1s var(--ease-editorial) ${delay}ms, transform 1s var(--ease-editorial) ${delay}ms`,
+        transform: shown ? "translateY(0)" : "translateY(32px)",
+        transition: `opacity 1.1s var(--ease-editorial) ${delay}ms, transform 1.1s var(--ease-editorial) ${delay}ms`,
       }}
     >
       {children}
@@ -40,9 +53,9 @@ const Reveal = ({ children, delay = 0, className = "" }: { children: React.React
   );
 };
 
-const SectionLabel = ({ index, children }: { index: string; children: React.ReactNode }) => (
-  <div className="flex items-baseline gap-6">
-    <span className="font-mono-ed text-[11px] tracking-[0.2em] text-ash">{index}</span>
+const Eyebrow = ({ index, children }: { index?: string; children: React.ReactNode }) => (
+  <div className="flex items-baseline gap-6 num">
+    {index && <span className="font-mono-ed text-[10px] tracking-[0.24em] text-ash">{index}</span>}
     <span className="eyebrow">{children}</span>
   </div>
 );
@@ -60,60 +73,89 @@ const Header = () => {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-paper/85 backdrop-blur-md border-b border-hairline" : "bg-transparent"
+        scrolled ? "bg-paper/90 backdrop-blur-md border-b border-hairline" : "bg-transparent"
       }`}
     >
-      <div className="container-ed flex h-16 items-center justify-between">
-        <a href="#top" className="font-display text-xl tracking-tighter">TWear<span className="text-ash">®</span></a>
-        <nav className="hidden md:flex items-center gap-10 font-mono-ed text-[11px] tracking-[0.18em] uppercase">
-          <a href="#philosophy" className="hover:text-ash transition-colors">Philosophy</a>
-          <a href="#work" className="hover:text-ash transition-colors">Work</a>
-          <a href="#quality" className="hover:text-ash transition-colors">Quality</a>
-          <a href="#process" className="hover:text-ash transition-colors">Process</a>
-          <a href="#products" className="hover:text-ash transition-colors">Products</a>
-          <a href="#faq" className="hover:text-ash transition-colors">FAQ</a>
+      <div className="container-ed flex h-20 items-center justify-between">
+        <a href="#top" className={`font-display text-2xl tracking-tightest ${scrolled ? "text-ink" : "text-paper"}`}>
+          TWEAR
+        </a>
+        <nav
+          className={`hidden md:flex items-center gap-10 font-mono-ed text-[10px] tracking-[0.24em] uppercase ${
+            scrolled ? "text-ink" : "text-paper"
+          }`}
+        >
+          <a href="#philosophy" className="hover:opacity-60 transition">Подход</a>
+          <a href="#work" className="hover:opacity-60 transition">Работы</a>
+          <a href="#quality" className="hover:opacity-60 transition">Материалы</a>
+          <a href="#process" className="hover:opacity-60 transition">Процесс</a>
+          <a href="#products" className="hover:opacity-60 transition">Изделия</a>
+          <a href="#faq" className="hover:opacity-60 transition">Вопросы</a>
         </nav>
-        <a href="#contact" className="group relative font-mono-ed text-[11px] tracking-[0.18em] uppercase">
-          <span className="border-b border-ink pb-1 group-hover:border-ash transition-colors">Start a project</span>
+        <a
+          href="#contact"
+          className={`group font-mono-ed text-[10px] tracking-[0.24em] uppercase ${
+            scrolled ? "text-ink" : "text-paper"
+          }`}
+        >
+          <span className="border-b border-current pb-1 group-hover:opacity-60 transition">
+            Обсудить проект
+          </span>
         </a>
       </div>
     </header>
   );
 };
 
-/* ——— Hero ——— */
+/* ——— Hero ——— Asymmetric, magazine cover */
 
 const Hero = () => (
-  <section id="top" className="relative h-screen min-h-[760px] w-full overflow-hidden bg-ink">
+  <section id="top" className="relative min-h-[100svh] w-full overflow-hidden bg-ink">
     <img
       src={hero}
-      alt="Model wearing a premium heavyweight cotton t-shirt"
-      width={1920}
-      height={1280}
-      className="absolute inset-0 h-full w-full object-cover opacity-90 ken-burns"
+      alt="Модель в премиальной хлопковой футболке кремового цвета"
+      width={1600}
+      height={1920}
+      className="absolute inset-0 h-full w-full object-cover opacity-95 ken-burns"
     />
-    <div className="absolute inset-0 bg-gradient-to-b from-ink/30 via-transparent to-ink/70" />
-    <div className="container-ed relative z-10 flex h-full flex-col justify-between pt-28 pb-12">
-      <div className="flex items-center justify-between text-paper/80 font-mono-ed text-[11px] tracking-[0.2em] uppercase animate-fade-in">
-        <span>Apparel Studio — Est. for brands that don't compromise</span>
-        <span className="hidden md:block">N°01 / Spring Édition</span>
+    <div className="absolute inset-0 bg-gradient-to-b from-ink/30 via-transparent to-ink/55" />
+
+    {/* Top meta */}
+    <div className="container-ed relative z-10 pt-28">
+      <div className="flex items-start justify-between text-paper/80 font-mono-ed text-[10px] tracking-[0.24em] uppercase animate-rise num">
+        <div>
+          <div>TWear Studio</div>
+          <div className="text-paper/50 mt-1">Производство одежды · с 2019</div>
+        </div>
+        <div className="text-right hidden md:block">
+          <div>Выпуск №01</div>
+          <div className="text-paper/50 mt-1">Москва · Стамбул · Лиссабон</div>
+        </div>
       </div>
-      <div className="max-w-[1400px]">
-        <h1 className="font-display text-paper tracking-tightest leading-[0.92] text-[18vw] md:text-[10.5vw] lg:text-[9.5vw] animate-rise">
-          Clothing<br />
-          <span className="italic font-light">worthy</span> of<br />
-          your brand.
-        </h1>
-        <div className="mt-10 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
-          <p className="max-w-md text-paper/80 text-base md:text-lg leading-relaxed">
-            A manufacturing partner for brands, teams, companies and events.
-            We make garments people want to wear — and brands proud to give.
+    </div>
+
+    {/* Headline — asymmetric, bottom-left */}
+    <div className="container-ed absolute inset-x-0 bottom-0 z-10 pb-14 md:pb-20">
+      <h1
+        className="font-display text-paper tracking-tightest text-[15vw] md:text-[12vw] lg:text-[10.5vw] animate-rise"
+        style={{ animationDelay: "120ms" }}
+      >
+        Одежда,<br />
+        достойная<br />
+        вашего бренда.
+      </h1>
+
+      <div className="mt-12 grid grid-cols-12 gap-6">
+        <div className="col-span-12 md:col-span-5 md:col-start-7 lg:col-span-4 lg:col-start-8">
+          <p className="text-paper/85 text-base md:text-lg leading-[1.4] max-w-md">
+            Производственная студия для брендов, команд, компаний и&nbsp;событий.
+            Делаем вещи, которые носят с&nbsp;удовольствием — и&nbsp;дарят с&nbsp;гордостью.
           </p>
           <a
             href="#contact"
-            className="group inline-flex items-center gap-4 self-start md:self-end border border-paper/40 px-7 py-5 text-paper font-mono-ed text-[12px] tracking-[0.22em] uppercase hover:bg-paper hover:text-ink transition-all duration-500"
+            className="group mt-8 inline-flex items-center gap-5 border border-paper/40 px-8 py-5 text-paper font-mono-ed text-[11px] tracking-[0.24em] uppercase hover:bg-paper hover:text-ink transition-all duration-500"
           >
-            Discuss your project
+            Обсудить проект
             <span className="inline-block transition-transform duration-500 group-hover:translate-x-1">→</span>
           </a>
         </div>
@@ -123,16 +165,17 @@ const Hero = () => (
 );
 
 /* ——— Marquee ——— */
+
 const Marquee = () => {
-  const items = ["Teams", "Brands", "Companies", "Events", "Studios", "Universities", "Festivals", "Agencies"];
-  const full = [...items, ...items];
+  const items = ["Бренды", "Команды", "Компании", "События", "Студии", "Фестивали", "Университеты", "Агентства"];
+  const full = [...items, ...items, ...items];
   return (
-    <div className="border-y border-hairline overflow-hidden bg-paper py-10">
+    <div className="border-y border-hairline overflow-hidden bg-paper py-14 md:py-20">
       <div className="flex whitespace-nowrap marquee">
         {full.map((it, i) => (
-          <span key={i} className="font-display text-5xl md:text-6xl tracking-tighter mx-10 flex items-center gap-10">
+          <span key={i} className="font-display text-7xl md:text-[7rem] tracking-tightest mx-12 flex items-center gap-12 text-ink">
             {it}
-            <span className="text-ash text-2xl">●</span>
+            <span className="inline-block w-3 h-3 bg-ink translate-y-[-0.4em]" />
           </span>
         ))}
       </div>
@@ -140,266 +183,213 @@ const Marquee = () => {
   );
 };
 
-/* ——— Philosophy ——— */
+/* ——— Manifesto / Philosophy — asymmetric, monumental ——— */
 
 const Philosophy = () => (
-  <section id="philosophy" className="bg-paper py-32 md:py-48">
-    <div className="container-ed grid grid-cols-12 gap-8">
-      <div className="col-span-12 md:col-span-3">
-        <Reveal>
-          <SectionLabel index="01">Philosophy</SectionLabel>
-        </Reveal>
+  <section id="philosophy" className="bg-paper pt-40 md:pt-56 pb-32 md:pb-48">
+    <div className="container-ed">
+      <Reveal>
+        <Eyebrow index="01">Подход</Eyebrow>
+      </Reveal>
+
+      <div className="mt-20 md:mt-32 grid grid-cols-12 gap-6">
+        <div className="col-span-12 md:col-span-11 md:col-start-1">
+          <Reveal delay={100}>
+            <h2 className="font-display tracking-tightest text-[12vw] md:text-[9vw] lg:text-[8vw] leading-[0.86]">
+              Большинство<br />
+              производств заставляют<br />
+              выбирать между<br />
+              <span className="text-ash">качеством</span> и&nbsp;<span className="text-ash">ценой</span>.
+            </h2>
+          </Reveal>
+        </div>
+
+        <div className="col-span-12 md:col-span-4 md:col-start-9 mt-12 md:mt-24">
+          <Reveal delay={260}>
+            <p className="font-display text-5xl md:text-6xl tracking-tightest leading-[0.92]">
+              Мы&nbsp;— нет.
+            </p>
+          </Reveal>
+        </div>
       </div>
-      <div className="col-span-12 md:col-span-9">
-        <Reveal delay={120}>
-          <h2 className="font-display tracking-tightest leading-[0.96] text-4xl md:text-6xl lg:text-7xl">
-            Most manufacturers make you choose between
-            <span className="italic font-light text-ash"> quality </span>
-            and
-            <span className="italic font-light text-ash"> price</span>.
-            <br />
-            We don't.
-          </h2>
-        </Reveal>
-        <Reveal delay={260}>
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-10 max-w-4xl">
-            <p className="text-base leading-relaxed text-ash">
-              We built TWear because the industry forces a false trade-off.
-              The garments that look good rarely last; the ones that last rarely feel right.
+
+      <div className="mt-32 md:mt-48 grid grid-cols-12 gap-8">
+        <div className="col-span-12 md:col-span-4 md:col-start-7">
+          <Reveal delay={100}>
+            <p className="text-base md:text-lg leading-[1.55] text-ink">
+              Мы&nbsp;создали TWear, потому что индустрия навязывает ложный выбор. Вещи, которые
+              хорошо выглядят, редко выдерживают носку. Те, что служат долго, редко ощущаются
+              правильно.
             </p>
-            <p className="text-base leading-relaxed text-ash">
-              We work directly with our production, not through layers of middlemen.
-              That's how we can hold a higher standard at a price that still makes sense.
+          </Reveal>
+        </div>
+        <div className="col-span-12 md:col-span-4 md:col-start-7 md:col-start-7 mt-2">
+          <Reveal delay={200}>
+            <p className="text-base md:text-lg leading-[1.55] text-ash">
+              Работаем напрямую с&nbsp;собственным производством, без посредников. Поэтому держим
+              высокий стандарт по&nbsp;цене, которая остаётся осмысленной.
             </p>
-            <p className="text-base leading-relaxed text-ash">
-              No minimums of three thousand. No vague timelines.
-              No surprise invoices. Just clothing made the way it should be.
-            </p>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
       </div>
     </div>
   </section>
 );
 
-/* ——— Work / Portfolio ——— */
+/* ——— Statement image break — full bleed ——— */
+
+const Statement = () => (
+  <section className="bg-paper">
+    <div className="relative w-full h-[80vh] md:h-[110vh] overflow-hidden">
+      <img src={embroidery} alt="Макро ручной вышивки на хлопке" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+      <div className="absolute bottom-10 left-6 md:bottom-16 md:left-16 text-paper font-mono-ed text-[10px] tracking-[0.24em] uppercase">
+        №02 — Деталь, олива / охра
+      </div>
+    </div>
+  </section>
+);
+
+/* ——— Work / Portfolio — editorial grid ——— */
 
 const Work = () => {
   const items = [
-    { img: team, client: "FC Northline", type: "Training Kit", year: "2025" },
-    { img: hoodie, client: "Maison Verde", type: "Heavyweight Hoodies", year: "2025" },
-    { img: tshirts, client: "Atrium Studio", type: "Staff Capsule", year: "2024" },
-    { img: collar, client: "Form & Field", type: "Embroidered Tees", year: "2024" },
+    { img: team, client: "Северный СК", type: "Тренировочная форма", year: "2025" },
+    { img: hoodie, client: "Maison Verde", type: "Капсула худи", year: "2025" },
+    { img: tshirts, client: "Atrium", type: "Сотрудники, выпуск 03", year: "2024" },
+    { img: collar, client: "Form & Field", type: "Футболки с вышивкой", year: "2024" },
   ];
   return (
-    <section id="work" className="bg-paper">
-      <div className="container-ed pt-32 pb-16">
-        <div className="grid grid-cols-12 gap-8 items-end">
-          <div className="col-span-12 md:col-span-4">
-            <Reveal><SectionLabel index="02">Selected Work</SectionLabel></Reveal>
-          </div>
+    <section id="work" className="bg-paper pt-40 md:pt-56">
+      <div className="container-ed">
+        <Reveal><Eyebrow index="02">Избранные работы</Eyebrow></Reveal>
+        <div className="mt-12 grid grid-cols-12">
           <div className="col-span-12 md:col-span-8">
             <Reveal delay={120}>
-              <h2 className="font-display tracking-tightest leading-[0.96] text-4xl md:text-6xl">
-                Recent <span className="italic font-light">commissions</span>.
+              <h2 className="font-display tracking-tightest text-[12vw] md:text-[9vw] leading-[0.86]">
+                Недавние<br />заказы.
               </h2>
             </Reveal>
           </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2">
-        {items.map((it, i) => (
-          <Reveal key={it.client} delay={i * 80}>
-            <article className="group relative aspect-[4/5] overflow-hidden bg-bone">
+      {/* asymmetric grid */}
+      <div className="mt-24 md:mt-32 grid grid-cols-12 gap-6 md:gap-10 container-ed">
+        {/* big left */}
+        <Reveal className="col-span-12 md:col-span-7">
+          <article className="group">
+            <div className="relative aspect-[4/5] overflow-hidden bg-bone">
               <img
-                src={it.img}
-                alt={`${it.client} — ${it.type}`}
+                src={items[0].img}
+                alt={`${items[0].client} — ${items[0].type}`}
                 loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-[1.04]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute inset-x-0 bottom-0 p-8 md:p-12 text-paper translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                <div className="font-mono-ed text-[11px] tracking-[0.2em] uppercase opacity-80">{it.type} · {it.year}</div>
-                <div className="mt-2 font-display text-3xl md:text-4xl tracking-tighter">{it.client}</div>
+            </div>
+            <div className="mt-5 flex items-baseline justify-between font-mono-ed text-[10px] tracking-[0.24em] uppercase">
+              <span>{items[0].client}</span>
+              <span className="text-ash">{items[0].type} · {items[0].year}</span>
+            </div>
+          </article>
+        </Reveal>
+
+        {/* small right, offset down */}
+        <div className="col-span-12 md:col-span-4 md:col-start-9 md:mt-48">
+          <Reveal delay={120}>
+            <article className="group">
+              <div className="relative aspect-[3/4] overflow-hidden bg-bone">
+                <img
+                  src={items[1].img}
+                  alt={`${items[1].client} — ${items[1].type}`}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-[1.04]"
+                />
+              </div>
+              <div className="mt-5 flex items-baseline justify-between font-mono-ed text-[10px] tracking-[0.24em] uppercase">
+                <span>{items[1].client}</span>
+                <span className="text-ash">{items[1].year}</span>
               </div>
             </article>
           </Reveal>
-        ))}
+        </div>
+
+        {/* small left low */}
+        <div className="col-span-12 md:col-span-4 md:col-start-2 md:mt-24">
+          <Reveal delay={80}>
+            <article className="group">
+              <div className="relative aspect-[3/4] overflow-hidden bg-bone">
+                <img
+                  src={items[3].img}
+                  alt={`${items[3].client} — ${items[3].type}`}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-[1.04]"
+                />
+              </div>
+              <div className="mt-5 flex items-baseline justify-between font-mono-ed text-[10px] tracking-[0.24em] uppercase">
+                <span>{items[3].client}</span>
+                <span className="text-ash">{items[3].year}</span>
+              </div>
+            </article>
+          </Reveal>
+        </div>
+
+        {/* tall right */}
+        <Reveal className="col-span-12 md:col-span-6 md:col-start-7" delay={160}>
+          <article className="group">
+            <div className="relative aspect-[4/5] overflow-hidden bg-bone">
+              <img
+                src={items[2].img}
+                alt={`${items[2].client} — ${items[2].type}`}
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-[1.04]"
+              />
+            </div>
+            <div className="mt-5 flex items-baseline justify-between font-mono-ed text-[10px] tracking-[0.24em] uppercase">
+              <span>{items[2].client}</span>
+              <span className="text-ash">{items[2].type} · {items[2].year}</span>
+            </div>
+          </article>
+        </Reveal>
       </div>
+      <div className="h-32 md:h-48" />
     </section>
   );
 };
 
-/* ——— Industries ——— */
+/* ——— Industries — typographic list, inverted ——— */
 
 const Industries = () => {
   const rows = [
-    { n: "I.", name: "Sports Teams", note: "Match kits, training, fan apparel" },
-    { n: "II.", name: "Companies", note: "Onboarding gifts, internal capsules, retail merch" },
-    { n: "III.", name: "Brands", note: "Private label production, drops, sampling" },
-    { n: "IV.", name: "Events", note: "Festivals, conferences, weddings, gifting" },
+    { n: "I", name: "Бренды", note: "Контрактное производство, дропы, пресс-семплы" },
+    { n: "II", name: "Команды", note: "Матчевая, тренировочная и фанатская экипировка" },
+    { n: "III", name: "Компании", note: "Велком-наборы, внутренние капсулы, мерч" },
+    { n: "IV", name: "События", note: "Фестивали, конференции, свадьбы, подарки" },
   ];
   return (
-    <section className="bg-ink text-paper py-32 md:py-48">
-      <div className="container-ed grid grid-cols-12 gap-8">
-        <div className="col-span-12 md:col-span-4">
-          <Reveal>
-            <SectionLabel index="03"><span className="text-paper/60">Who we make for</span></SectionLabel>
-            <h2 className="mt-8 font-display text-4xl md:text-5xl tracking-tightest leading-[0.96]">
-              Built for four<br /><span className="italic font-light">different</span> audiences.
-            </h2>
-          </Reveal>
-        </div>
-        <div className="col-span-12 md:col-span-8 md:border-t md:border-paper/20">
-          {rows.map((r, i) => (
-            <Reveal key={r.name} delay={i * 80}>
-              <div className="group grid grid-cols-12 items-baseline gap-6 border-b border-paper/20 py-10 md:py-14 transition-colors hover:bg-paper/[0.03] cursor-default px-2">
-                <div className="col-span-2 md:col-span-1 font-mono-ed text-[11px] tracking-[0.2em] text-paper/50">{r.n}</div>
-                <div className="col-span-10 md:col-span-5 font-display text-3xl md:text-5xl tracking-tighter">{r.name}</div>
-                <div className="col-span-12 md:col-span-6 text-paper/60 text-base md:text-lg">{r.note}</div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-/* ——— Quality ——— */
-
-const Quality = () => (
-  <section id="quality" className="bg-paper">
-    <div className="container-ed py-32 md:py-40">
-      <Reveal><SectionLabel index="04">Quality</SectionLabel></Reveal>
-      <Reveal delay={120}>
-        <h2 className="mt-10 font-display text-5xl md:text-7xl lg:text-8xl tracking-tightest leading-[0.94] max-w-5xl">
-          Standards that <span className="italic font-light">show</span> in the hand-feel.
-        </h2>
-      </Reveal>
-    </div>
-
-    <div className="grid grid-cols-1 md:grid-cols-12 gap-px bg-hairline">
-      <div className="md:col-span-7 bg-paper relative aspect-[4/5] md:aspect-auto overflow-hidden">
-        <img src={fabric} alt="Macro view of cotton fabric weave" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
-      </div>
-      <div className="md:col-span-5 bg-paper p-10 md:p-16 flex flex-col justify-center">
-        <Reveal>
-          <div className="space-y-10">
-            {[
-              ["95 / 5", "Cotton & polyester blend. Soft to the touch, structured enough to keep its shape after a hundred washes."],
-              ["180 GSM", "Mid-heavy weight. Substantial without sweating, drapes naturally, photographs beautifully."],
-              ["Embroidery", "Industrial-grade thread laid by calibrated machines. Edges defined. No loose ends."],
-              ["Printing", "Pigment-bonded inks engineered to outlast the garment. Hand-feel preserved."],
-              ["QC", "Inspection at cutting, sewing, finishing, and packing. Four checkpoints before it ships."],
-            ].map(([k, v]) => (
-              <div key={k} className="grid grid-cols-12 gap-4 items-baseline border-b border-hairline pb-8 last:border-0 last:pb-0">
-                <div className="col-span-4 font-display text-3xl md:text-4xl tracking-tighter">{k}</div>
-                <p className="col-span-8 text-ash leading-relaxed text-[15px]">{v}</p>
-              </div>
-            ))}
-          </div>
-        </Reveal>
-      </div>
-    </div>
-
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-hairline">
-      <div className="bg-paper aspect-[4/5] overflow-hidden relative">
-        <img src={embroidery} alt="Macro photograph of dimensional embroidery on cotton" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
-      </div>
-      <div className="bg-paper aspect-[4/5] overflow-hidden relative">
-        <img src={collar} alt="Premium ribbed collar and shoulder seam detail" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
-      </div>
-    </div>
-  </section>
-);
-
-/* ——— Process ——— */
-
-const Process = () => {
-  const steps = [
-    ["01", "Brief", "We listen. Quantities, deadlines, budget, references. No template forms."],
-    ["02", "Sample", "We produce a physical sample so you feel what you'll be ordering — before you commit."],
-    ["03", "Production", "Cutting, sewing, decoration. You see updates at every stage."],
-    ["04", "Inspection", "Four checkpoints. Anything sub-standard is remade, not shipped."],
-    ["05", "Delivery", "Packed, labelled and dispatched. Tracking in your inbox."],
-  ];
-  return (
-    <section id="process" className="bg-ink text-paper">
-      <div className="relative h-[60vh] min-h-[420px] overflow-hidden">
-        <img src={process} alt="Garment workshop interior" loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-70" />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/40 to-ink" />
-        <div className="container-ed relative h-full flex items-end pb-16">
-          <Reveal>
-            <SectionLabel index="05"><span className="text-paper/60">Process</span></SectionLabel>
-            <h2 className="mt-6 font-display text-5xl md:text-7xl tracking-tightest leading-[0.94]">
-              Five steps.<br /><span className="italic font-light">Nothing</span> hidden.
-            </h2>
-          </Reveal>
-        </div>
-      </div>
-      <div className="container-ed py-24">
-        <div className="border-t border-paper/20">
-          {steps.map(([n, name, desc], i) => (
-            <Reveal key={n} delay={i * 60}>
-              <div className="grid grid-cols-12 gap-6 border-b border-paper/20 py-10 items-baseline">
-                <div className="col-span-2 md:col-span-1 font-mono-ed text-[11px] tracking-[0.2em] text-paper/50">{n}</div>
-                <div className="col-span-10 md:col-span-4 font-display text-3xl md:text-4xl tracking-tighter">{name}</div>
-                <p className="col-span-12 md:col-span-7 text-paper/70 leading-relaxed">{desc}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-/* ——— Products ——— */
-
-const Products = () => {
-  const items = [
-    { img: tshirts, name: "T-shirts", note: "180 GSM heavyweight" },
-    { img: hoodie, name: "Hoodies", note: "Brushed inner, double-needle" },
-    { img: collar, name: "Sweatshirts", note: "Structured crewnecks" },
-    { img: accessories, name: "Garment bags", note: "Branded packaging" },
-    { img: embroidery, name: "Socks", note: "Custom-knit, woven logos" },
-    { img: fabric, name: "Accessories", note: "Caps, totes, patches" },
-  ];
-  return (
-    <section id="products" className="bg-paper py-32">
+    <section className="bg-ink text-paper py-40 md:py-56">
       <div className="container-ed">
-        <div className="grid grid-cols-12 gap-8 items-end">
-          <div className="col-span-12 md:col-span-5">
-            <Reveal><SectionLabel index="06">Products</SectionLabel></Reveal>
-            <Reveal delay={120}>
-              <h2 className="mt-8 font-display text-5xl md:text-6xl tracking-tightest leading-[0.96]">
-                A growing <span className="italic font-light">catalogue</span>.
+        <Reveal><Eyebrow index="03"><span className="text-paper/70">Для кого</span></Eyebrow></Reveal>
+
+        <div className="mt-16 md:mt-24 grid grid-cols-12 gap-8">
+          <div className="col-span-12 md:col-span-6">
+            <Reveal delay={100}>
+              <h2 className="font-display tracking-tightest text-[12vw] md:text-[8vw] leading-[0.86]">
+                Производим<br />для четырёх<br />аудиторий.
               </h2>
             </Reveal>
           </div>
-          <div className="col-span-12 md:col-span-5 md:col-start-8">
-            <Reveal delay={200}>
-              <p className="text-ash leading-relaxed">
-                Start with what you need today. Expand when you're ready —
-                an online configurator and direct ordering are launching soon for partners.
-              </p>
-            </Reveal>
-          </div>
         </div>
 
-        <div className="mt-20 grid grid-cols-2 md:grid-cols-3 gap-px bg-hairline">
-          {items.map((p, i) => (
-            <Reveal key={p.name} delay={i * 60}>
-              <div className="group bg-paper aspect-[4/5] relative overflow-hidden cursor-default">
-                <img src={p.img} alt={p.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]" />
-                <div className="absolute inset-x-0 bottom-0 p-6 md:p-8 flex items-end justify-between bg-gradient-to-t from-ink/60 to-transparent text-paper">
-                  <div>
-                    <div className="font-display text-2xl md:text-3xl tracking-tighter">{p.name}</div>
-                    <div className="font-mono-ed text-[10px] tracking-[0.2em] uppercase opacity-80 mt-1">{p.note}</div>
-                  </div>
-                  <span className="font-mono-ed text-[10px] tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity">0{i + 1}</span>
+        <div className="mt-24 md:mt-32">
+          {rows.map((r, i) => (
+            <Reveal key={r.name} delay={i * 80}>
+              <div className="group grid grid-cols-12 items-baseline gap-6 border-t border-paper/15 py-10 md:py-14 last:border-b">
+                <div className="col-span-2 md:col-span-1 font-mono-ed text-[10px] tracking-[0.24em] text-paper/40 num">{r.n}</div>
+                <div className="col-span-10 md:col-span-7 font-display text-[14vw] md:text-[7vw] tracking-tightest leading-[0.88]">
+                  {r.name}
+                </div>
+                <div className="col-span-12 md:col-span-4 text-paper/60 text-base md:text-lg leading-[1.4]">
+                  {r.note}
                 </div>
               </div>
             </Reveal>
@@ -410,38 +400,209 @@ const Products = () => {
   );
 };
 
-/* ——— Testimonials ——— */
+/* ——— Quality — split, dense data ——— */
+
+const Quality = () => (
+  <section id="quality" className="bg-paper">
+    <div className="container-ed pt-40 md:pt-56 pb-24">
+      <Reveal><Eyebrow index="04">Материалы и контроль</Eyebrow></Reveal>
+      <div className="mt-16 grid grid-cols-12 gap-8">
+        <div className="col-span-12 md:col-span-10">
+          <Reveal delay={100}>
+            <h2 className="font-display tracking-tightest text-[12vw] md:text-[8vw] leading-[0.86]">
+              Стандарт,<br />который<br />чувствуется в&nbsp;руке.
+            </h2>
+          </Reveal>
+        </div>
+      </div>
+    </div>
+
+    {/* Fabric — large left, data right */}
+    <div className="grid grid-cols-1 md:grid-cols-12 gap-px bg-hairline">
+      <div className="md:col-span-7 bg-paper relative aspect-[4/5] md:aspect-auto md:min-h-[820px] overflow-hidden">
+        <img src={fabric} alt="Макро плетения премиального хлопка" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+      </div>
+      <div className="md:col-span-5 bg-paper p-10 md:p-20 flex flex-col justify-center">
+        <Reveal>
+          <div className="space-y-12">
+            {[
+              ["95 / 5", "Хлопок и полиэстер. Мягкость на ощупь, структура, которая сохраняется после ста стирок."],
+              ["180 г/м²", "Средне-тяжёлая плотность. Не парит, держит силуэт, ложится естественно."],
+              ["Вышивка", "Промышленная нить, откалиброванные машины. Чёткие края, без выбившихся петель."],
+              ["Печать", "Пигментные чернила связаны с волокном. Износостойкость без потери тактильности."],
+              ["Контроль", "Проверка на раскрое, пошиве, отделке и упаковке. Четыре точки до отгрузки."],
+            ].map(([k, v]) => (
+              <div key={k} className="grid grid-cols-12 gap-4 items-baseline border-b border-hairline pb-8 last:border-0 last:pb-0">
+                <div className="col-span-5 font-display text-3xl md:text-5xl tracking-tightest num">{k}</div>
+                <p className="col-span-7 text-ash leading-[1.5] text-[15px]">{v}</p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </div>
+
+    {/* Two macro images */}
+    <div className="grid grid-cols-1 md:grid-cols-12 gap-px bg-hairline">
+      <div className="md:col-span-5 bg-paper aspect-[4/5] overflow-hidden relative">
+        <img src={collar} alt="Деталь рёбра воротника и плечевого шва" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+      </div>
+      <div className="md:col-span-7 bg-paper aspect-[4/5] md:aspect-auto overflow-hidden relative">
+        <img src={embroidery} alt="Объёмная вышивка на хлопковом полотне" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+      </div>
+    </div>
+  </section>
+);
+
+/* ——— Process — full-bleed image + sparse list ——— */
+
+const Process = () => {
+  const steps: [string, string, string][] = [
+    ["01", "Бриф", "Слушаем. Тиражи, сроки, бюджет, референсы. Никаких шаблонных форм."],
+    ["02", "Образец", "Физический семпл до старта тиража. Вы трогаете руками то, что закажете."],
+    ["03", "Производство", "Раскрой, пошив, декорирование. Прозрачные обновления на каждом этапе."],
+    ["04", "Контроль", "Четыре точки приёмки. Брак не отгружается, а переделывается."],
+    ["05", "Доставка", "Упаковка, маркировка, логистика до двери. Трек-номер в почте."],
+  ];
+  return (
+    <section id="process" className="bg-ink text-paper">
+      <div className="relative h-[80svh] min-h-[520px] overflow-hidden">
+        <img src={processImg} alt="Интерьер швейного цеха" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/30 via-transparent to-ink" />
+        <div className="container-ed relative h-full flex items-end pb-16 md:pb-24">
+          <Reveal>
+            <Eyebrow index="05"><span className="text-paper/70">Процесс</span></Eyebrow>
+            <h2 className="mt-8 font-display text-[14vw] md:text-[9vw] tracking-tightest leading-[0.86]">
+              Пять шагов.<br />Ничего скрытого.
+            </h2>
+          </Reveal>
+        </div>
+      </div>
+
+      <div className="container-ed py-24 md:py-32">
+        <div>
+          {steps.map(([n, name, desc], i) => (
+            <Reveal key={n} delay={i * 60}>
+              <div className="grid grid-cols-12 gap-6 border-t border-paper/15 py-10 md:py-14 items-baseline last:border-b">
+                <div className="col-span-2 md:col-span-1 font-mono-ed text-[10px] tracking-[0.24em] text-paper/40 num">{n}</div>
+                <div className="col-span-10 md:col-span-5 font-display text-4xl md:text-6xl tracking-tightest">
+                  {name}
+                </div>
+                <p className="col-span-12 md:col-span-6 text-paper/65 leading-[1.5] text-base md:text-lg">{desc}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/* ——— Products — editorial catalogue ——— */
+
+const Products = () => {
+  const items = [
+    { img: tshirts, name: "Футболки", note: "180 г/м², плотный хлопок" },
+    { img: hoodie, name: "Худи", note: "Начёс изнутри, двойная игла" },
+    { img: collar, name: "Свитшоты", note: "Структурный круглый ворот" },
+    { img: accessories, name: "Сумки", note: "Брендированные шопперы" },
+    { img: embroidery, name: "Носки", note: "Вязка под заказ, тканый логотип" },
+    { img: fabric, name: "Аксессуары", note: "Кепки, патчи, шевроны" },
+  ];
+  return (
+    <section id="products" className="bg-paper py-40 md:py-56">
+      <div className="container-ed">
+        <div className="grid grid-cols-12 gap-8">
+          <div className="col-span-12 md:col-span-6">
+            <Reveal><Eyebrow index="06">Изделия</Eyebrow></Reveal>
+            <Reveal delay={120}>
+              <h2 className="mt-10 font-display tracking-tightest text-[12vw] md:text-[8vw] leading-[0.86]">
+                Растущий<br />каталог.
+              </h2>
+            </Reveal>
+          </div>
+          <div className="col-span-12 md:col-span-4 md:col-start-9 md:mt-auto">
+            <Reveal delay={200}>
+              <p className="text-ash leading-[1.55] text-base md:text-lg">
+                Начните с&nbsp;того, что нужно сегодня. Расширяйтесь, когда будете готовы&nbsp;—
+                онлайн-конфигуратор и&nbsp;прямой заказ для партнёров готовятся к&nbsp;запуску.
+              </p>
+            </Reveal>
+          </div>
+        </div>
+
+        <div className="mt-24 grid grid-cols-12 gap-6 md:gap-10">
+          {items.map((p, i) => {
+            // Asymmetric heights
+            const spans = ["md:col-span-7", "md:col-span-5", "md:col-span-5", "md:col-span-7", "md:col-span-7", "md:col-span-5"];
+            const ratios = ["aspect-[4/5]", "aspect-[3/4]", "aspect-[3/4]", "aspect-[4/5]", "aspect-[4/5]", "aspect-[3/4]"];
+            const offsets = ["", "md:mt-24", "", "md:mt-16", "", "md:mt-20"];
+            return (
+              <Reveal key={p.name} delay={(i % 3) * 80} className={`col-span-12 ${spans[i]} ${offsets[i]}`}>
+                <article className="group">
+                  <div className={`relative ${ratios[i]} overflow-hidden bg-bone`}>
+                    <img
+                      src={p.img}
+                      alt={p.name}
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-[1.04]"
+                    />
+                  </div>
+                  <div className="mt-5 flex items-baseline justify-between gap-6">
+                    <div className="font-display text-2xl md:text-3xl tracking-tightest">{p.name}</div>
+                    <div className="font-mono-ed text-[10px] tracking-[0.24em] uppercase text-ash text-right">{p.note}</div>
+                  </div>
+                </article>
+              </Reveal>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/* ——— Testimonials — large quote, magazine style ——— */
 
 const Testimonials = () => {
   const quotes = [
     {
-      q: "The first sample arrived and we cancelled the meeting with our previous supplier the same afternoon.",
-      a: "Léa M.",
-      r: "Founder, Maison Verde",
+      q: "Первый образец приехал — встречу с прежним поставщиком отменили в тот же день.",
+      a: "Лея М.",
+      r: "Основатель, Maison Verde",
     },
     {
-      q: "We've ordered three runs now. Zero defects, zero excuses, faxed invoices on the day they promised.",
-      a: "David K.",
-      r: "Operations, FC Northline",
+      q: "Три тиража подряд. Ноль брака, ноль оправданий, счета — день в день.",
+      a: "Давид К.",
+      r: "Операции, Северный СК",
     },
     {
-      q: "Felt like working with a design studio, not a manufacturer.",
-      a: "Aiko R.",
-      r: "Creative Director, Atrium",
+      q: "Ощущение, что работаешь с дизайн-студией, а не с фабрикой.",
+      a: "Айко Р.",
+      r: "Креативный директор, Atrium",
     },
   ];
   return (
-    <section className="bg-bone py-32 md:py-48">
+    <section className="bg-bone py-40 md:py-56">
       <div className="container-ed">
-        <Reveal><SectionLabel index="07">Word of mouth</SectionLabel></Reveal>
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-px bg-hairline">
+        <Reveal><Eyebrow index="07">Отзывы</Eyebrow></Reveal>
+
+        <div className="mt-24 md:mt-32 space-y-32 md:space-y-48">
           {quotes.map((t, i) => (
             <Reveal key={i} delay={i * 100}>
-              <figure className="bg-bone p-10 md:p-12 h-full flex flex-col justify-between gap-10 min-h-[360px]">
-                <blockquote className="font-display text-2xl md:text-3xl leading-[1.15] tracking-tighter">
-                  <span className="text-ash mr-1">“</span>{t.q}<span className="text-ash">”</span>
+              <figure className={`grid grid-cols-12 gap-8 ${i % 2 === 1 ? "md:text-right" : ""}`}>
+                <blockquote
+                  className={`col-span-12 ${
+                    i % 2 === 1 ? "md:col-span-9 md:col-start-4" : "md:col-span-9"
+                  } font-display tracking-tightest text-[9vw] md:text-[5.5vw] leading-[0.92]`}
+                >
+                  «{t.q}»
                 </blockquote>
-                <figcaption className="font-mono-ed text-[11px] tracking-[0.2em] uppercase text-ash">
+                <figcaption
+                  className={`col-span-12 ${
+                    i % 2 === 1 ? "md:col-span-4 md:col-start-9" : "md:col-span-4"
+                  } font-mono-ed text-[10px] tracking-[0.24em] uppercase text-ash`}
+                >
                   {t.a} — {t.r}
                 </figcaption>
               </figure>
@@ -456,44 +617,41 @@ const Testimonials = () => {
 /* ——— FAQ ——— */
 
 const FAQ = () => {
-  const items = [
-    ["What's the minimum order?", "We start at 30 units per style. Smaller pilot runs available for sampling."],
-    ["How long does production take?", "Typically 3–5 weeks from approved sample, depending on complexity and decoration."],
-    ["Can you match an existing garment?", "Yes. Send us a reference piece and we'll reverse-engineer the fit, fabric and finish."],
-    ["Do you handle decoration in-house?", "Embroidery, screen and DTG printing — all done in-house. Patches and woven labels through audited partners."],
-    ["What about sustainability?", "Our base blend uses long-staple cotton from certified mills. Full origin documentation available on request."],
-    ["Do you ship internationally?", "Yes. Door-to-door logistics worldwide, DDP available for EU and UK."],
+  const items: [string, string][] = [
+    ["Какой минимальный тираж?", "Старт от 30 единиц на модель. Доступны пилотные семплы меньшим тиражом."],
+    ["Сколько занимает производство?", "Обычно 3–5 недель с момента утверждения образца — в зависимости от сложности и декорирования."],
+    ["Можете повторить существующее изделие?", "Да. Пришлите референс — воспроизведём посадку, ткань и отделку."],
+    ["Декор делаете сами?", "Вышивка, шелкография и DTG — внутри. Патчи и тканые этикетки — у проверенных партнёров."],
+    ["Что с устойчивостью?", "База — длинноволокнистый хлопок с сертифицированных фабрик. Документы по происхождению — по запросу."],
+    ["Возите за рубеж?", "Да. Доставка по миру до двери, для ЕС и Великобритании доступен DDP."],
   ];
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section id="faq" className="bg-paper py-32 md:py-40">
+    <section id="faq" className="bg-paper py-40 md:py-56">
       <div className="container-ed grid grid-cols-12 gap-8">
         <div className="col-span-12 md:col-span-4">
           <Reveal>
-            <SectionLabel index="08">Questions</SectionLabel>
-            <h2 className="mt-8 font-display text-5xl md:text-6xl tracking-tightest leading-[0.96]">
-              Things worth<br /><span className="italic font-light">asking</span>.
+            <Eyebrow index="08">Вопросы</Eyebrow>
+            <h2 className="mt-12 font-display text-[12vw] md:text-[6vw] tracking-tightest leading-[0.88]">
+              О чём<br />стоит<br />спросить.
             </h2>
           </Reveal>
         </div>
-        <div className="col-span-12 md:col-span-8 border-t border-hairline">
+        <div className="col-span-12 md:col-span-7 md:col-start-6 border-t border-hairline">
           {items.map(([q, a], i) => {
             const isOpen = open === i;
             return (
               <div key={q} className="border-b border-hairline">
                 <button
-                  className="w-full flex items-center justify-between gap-6 py-7 text-left"
+                  className="w-full flex items-center justify-between gap-6 py-8 text-left"
                   onClick={() => setOpen(isOpen ? null : i)}
                 >
-                  <span className="font-display text-xl md:text-2xl tracking-tighter">{q}</span>
-                  <span className={`font-mono-ed text-lg transition-transform duration-500 ${isOpen ? "rotate-45" : ""}`}>+</span>
+                  <span className="font-display text-2xl md:text-3xl tracking-tightest">{q}</span>
+                  <span className={`font-mono-ed text-2xl transition-transform duration-500 ${isOpen ? "rotate-45" : ""}`}>+</span>
                 </button>
-                <div
-                  className="grid transition-all duration-500 ease-out"
-                  style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
-                >
+                <div className="grid transition-all duration-500 ease-out" style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}>
                   <div className="overflow-hidden">
-                    <p className="pb-7 pr-12 text-ash leading-relaxed max-w-2xl">{a}</p>
+                    <p className="pb-8 pr-12 text-ash leading-[1.55] max-w-2xl text-base md:text-lg">{a}</p>
                   </div>
                 </div>
               </div>
@@ -505,7 +663,7 @@ const FAQ = () => {
   );
 };
 
-/* ——— Contact ——— */
+/* ——— Contact — premium lead form ——— */
 
 const Contact = () => {
   const [sent, setSent] = useState(false);
@@ -521,108 +679,108 @@ const Contact = () => {
 
   return (
     <section id="contact" className="bg-ink text-paper">
-      <div className="container-ed py-32 md:py-48">
-        <div className="grid grid-cols-12 gap-8">
-          <div className="col-span-12 md:col-span-5">
-            <Reveal>
-              <SectionLabel index="09"><span className="text-paper/60">Start a project</span></SectionLabel>
-              <h2 className="mt-10 font-display text-5xl md:text-7xl tracking-tightest leading-[0.94]">
-                Tell us what<br />you have in <span className="italic font-light">mind</span>.
+      <div className="container-ed py-40 md:py-56">
+        <Reveal><Eyebrow index="09"><span className="text-paper/70">Начать проект</span></Eyebrow></Reveal>
+
+        <div className="mt-16 grid grid-cols-12 gap-8">
+          <div className="col-span-12 md:col-span-7">
+            <Reveal delay={100}>
+              <h2 className="font-display tracking-tightest text-[14vw] md:text-[9vw] leading-[0.86]">
+                Расскажите,<br />что у вас<br />на уме.
               </h2>
-              <p className="mt-10 text-paper/70 max-w-md leading-relaxed">
-                A studio member responds within one business day with first questions and indicative pricing.
-                If we're not the right fit, we'll tell you — and recommend someone who is.
+            </Reveal>
+          </div>
+          <div className="col-span-12 md:col-span-4 md:col-start-9 md:mt-auto">
+            <Reveal delay={200}>
+              <p className="text-paper/70 leading-[1.55] max-w-md text-base md:text-lg">
+                Сотрудник студии отвечает в&nbsp;течение одного рабочего дня — первые вопросы
+                и&nbsp;ориентировочная стоимость. Если мы не&nbsp;подходим, скажем честно
+                и&nbsp;порекомендуем тех, кто подходит.
               </p>
-              <div className="mt-16 space-y-2 font-mono-ed text-[12px] tracking-[0.18em] uppercase text-paper/60">
+              <div className="mt-12 space-y-2 font-mono-ed text-[11px] tracking-[0.24em] uppercase text-paper/60 num">
                 <div>studio@twear.co</div>
-                <div>+33 1 23 45 67 89</div>
-                <div>Paris · Porto · Istanbul</div>
+                <div>+7 (495) 123 45 67</div>
+                <div>Москва · Стамбул · Лиссабон</div>
               </div>
             </Reveal>
           </div>
+        </div>
 
-          <div className="col-span-12 md:col-span-7 md:pl-12">
-            <Reveal delay={120}>
-              {sent ? (
-                <div className="border border-paper/20 p-10 md:p-14 min-h-[480px] flex flex-col justify-center">
-                  <div className="font-mono-ed text-[11px] tracking-[0.2em] uppercase text-paper/60">Received</div>
-                  <p className="mt-6 font-display text-3xl md:text-4xl tracking-tighter leading-tight">
-                    Thank you, {form.name.split(" ")[0]}.<br />
-                    We'll reply by tomorrow.
-                  </p>
-                </div>
-              ) : (
-                <form onSubmit={onSubmit} className="space-y-0">
-                  {[
-                    { k: "name", l: "Your name", t: "text", req: true },
-                    { k: "company", l: "Company / Team", t: "text" },
-                    { k: "email", l: "Email", t: "email", req: true },
-                  ].map((f) => (
-                    <label key={f.k} className="group block border-b border-paper/20 py-5">
-                      <span className="block font-mono-ed text-[10px] tracking-[0.22em] uppercase text-paper/50">{f.l}{f.req && " *"}</span>
-                      <input
-                        type={f.t}
-                        required={f.req}
-                        value={(form as any)[f.k]}
-                        onChange={update(f.k as any)}
-                        className="mt-2 w-full bg-transparent text-paper font-display text-2xl md:text-3xl tracking-tighter placeholder:text-paper/30 outline-none"
-                        placeholder="—"
-                      />
-                    </label>
-                  ))}
-                  <div className="grid grid-cols-2 gap-px bg-paper/20 border-b border-paper/20">
-                    <label className="block bg-ink py-5 pr-6">
-                      <span className="block font-mono-ed text-[10px] tracking-[0.22em] uppercase text-paper/50">Project type</span>
-                      <select
-                        value={form.type}
-                        onChange={update("type")}
-                        className="mt-2 w-full bg-transparent text-paper font-display text-xl md:text-2xl tracking-tighter outline-none appearance-none"
-                      >
-                        <option value="" className="bg-ink">—</option>
-                        <option className="bg-ink">T-shirts</option>
-                        <option className="bg-ink">Hoodies / Sweatshirts</option>
-                        <option className="bg-ink">Full capsule</option>
-                        <option className="bg-ink">Event / Gifting</option>
-                        <option className="bg-ink">Other</option>
-                      </select>
-                    </label>
-                    <label className="block bg-ink py-5 pl-6">
-                      <span className="block font-mono-ed text-[10px] tracking-[0.22em] uppercase text-paper/50">Quantity</span>
-                      <input
-                        type="text"
-                        value={form.qty}
-                        onChange={update("qty")}
-                        placeholder="—"
-                        className="mt-2 w-full bg-transparent text-paper font-display text-xl md:text-2xl tracking-tighter placeholder:text-paper/30 outline-none"
-                      />
-                    </label>
-                  </div>
-                  <label className="block border-b border-paper/20 py-5">
-                    <span className="block font-mono-ed text-[10px] tracking-[0.22em] uppercase text-paper/50">Tell us about it *</span>
-                    <textarea
-                      required
-                      rows={4}
-                      maxLength={1000}
-                      value={form.message}
-                      onChange={update("message")}
+        <div className="mt-24 md:mt-32">
+          <Reveal delay={120}>
+            {sent ? (
+              <div className="border-t border-paper/20 pt-16">
+                <div className="font-mono-ed text-[10px] tracking-[0.24em] uppercase text-paper/60">Заявка принята</div>
+                <p className="mt-8 font-display text-5xl md:text-7xl tracking-tightest leading-[0.92]">
+                  Спасибо, {form.name.split(" ")[0]}.<br />
+                  Ответим до завтра.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={onSubmit} className="grid grid-cols-12 gap-x-8 gap-y-0">
+                {[
+                  { k: "name", l: "Ваше имя", t: "text", req: true, span: "md:col-span-6" },
+                  { k: "company", l: "Компания / команда", t: "text", span: "md:col-span-6" },
+                  { k: "email", l: "Электронная почта", t: "email", req: true, span: "md:col-span-6" },
+                  { k: "qty", l: "Тираж (примерно)", t: "text", span: "md:col-span-6" },
+                ].map((f) => (
+                  <label key={f.k} className={`group block border-b border-paper/20 py-6 col-span-12 ${f.span}`}>
+                    <span className="block font-mono-ed text-[10px] tracking-[0.24em] uppercase text-paper/50">{f.l}{f.req && " *"}</span>
+                    <input
+                      type={f.t}
+                      required={f.req}
+                      value={(form as any)[f.k]}
+                      onChange={update(f.k as any)}
+                      className="mt-3 w-full bg-transparent text-paper font-display text-3xl md:text-4xl tracking-tightest placeholder:text-paper/25 outline-none"
                       placeholder="—"
-                      className="mt-2 w-full bg-transparent text-paper font-display text-xl md:text-2xl tracking-tighter placeholder:text-paper/30 outline-none resize-none"
                     />
                   </label>
-                  <div className="pt-10 flex items-center justify-between">
-                    <span className="font-mono-ed text-[10px] tracking-[0.22em] uppercase text-paper/40">Response within 1 business day</span>
-                    <button
-                      type="submit"
-                      className="group inline-flex items-center gap-4 border border-paper/40 px-8 py-5 font-mono-ed text-[12px] tracking-[0.22em] uppercase hover:bg-paper hover:text-ink transition-all duration-500"
-                    >
-                      Send inquiry
-                      <span className="inline-block transition-transform duration-500 group-hover:translate-x-1">→</span>
-                    </button>
-                  </div>
-                </form>
-              )}
-            </Reveal>
-          </div>
+                ))}
+
+                <label className="block border-b border-paper/20 py-6 col-span-12">
+                  <span className="block font-mono-ed text-[10px] tracking-[0.24em] uppercase text-paper/50">Тип проекта</span>
+                  <select
+                    value={form.type}
+                    onChange={update("type")}
+                    className="mt-3 w-full bg-transparent text-paper font-display text-3xl md:text-4xl tracking-tightest outline-none appearance-none cursor-pointer"
+                  >
+                    <option value="" className="bg-ink">—</option>
+                    <option className="bg-ink">Футболки</option>
+                    <option className="bg-ink">Худи / свитшоты</option>
+                    <option className="bg-ink">Полная капсула</option>
+                    <option className="bg-ink">Событие / подарки</option>
+                    <option className="bg-ink">Другое</option>
+                  </select>
+                </label>
+
+                <label className="block border-b border-paper/20 py-6 col-span-12">
+                  <span className="block font-mono-ed text-[10px] tracking-[0.24em] uppercase text-paper/50">Расскажите подробнее *</span>
+                  <textarea
+                    required
+                    rows={3}
+                    maxLength={1200}
+                    value={form.message}
+                    onChange={update("message")}
+                    placeholder="—"
+                    className="mt-3 w-full bg-transparent text-paper font-display text-2xl md:text-3xl tracking-tightest placeholder:text-paper/25 outline-none resize-none leading-tight"
+                  />
+                </label>
+
+                <div className="pt-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6 col-span-12">
+                  <span className="font-mono-ed text-[10px] tracking-[0.24em] uppercase text-paper/40">
+                    Ответ в течение одного рабочего дня
+                  </span>
+                  <button
+                    type="submit"
+                    className="group inline-flex items-center gap-5 self-start border border-paper/40 px-10 py-6 font-mono-ed text-[11px] tracking-[0.24em] uppercase hover:bg-paper hover:text-ink transition-all duration-500"
+                  >
+                    Отправить заявку
+                    <span className="inline-block transition-transform duration-500 group-hover:translate-x-1">→</span>
+                  </button>
+                </div>
+              </form>
+            )}
+          </Reveal>
         </div>
       </div>
     </section>
@@ -633,25 +791,33 @@ const Contact = () => {
 
 const Footer = () => (
   <footer className="bg-ink text-paper border-t border-paper/15">
-    <div className="container-ed py-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-      <div className="font-display text-xl tracking-tighter">TWear<span className="text-paper/40">®</span></div>
-      <div className="font-mono-ed text-[11px] tracking-[0.2em] uppercase text-paper/50">
-        © {new Date().getFullYear()} TWear Studio — All rights reserved
-      </div>
-      <div className="font-mono-ed text-[11px] tracking-[0.2em] uppercase text-paper/50 flex gap-8">
-        <a href="#" className="hover:text-paper">Instagram</a>
-        <a href="#" className="hover:text-paper">LinkedIn</a>
+    <div className="container-ed py-16">
+      <div className="grid grid-cols-12 gap-8 items-end">
+        <div className="col-span-12 md:col-span-6">
+          <div className="font-display text-[18vw] md:text-[10vw] tracking-tightest leading-[0.86]">TWEAR</div>
+        </div>
+        <div className="col-span-6 md:col-span-3 font-mono-ed text-[10px] tracking-[0.24em] uppercase text-paper/60 space-y-2">
+          <div>Instagram</div>
+          <div>Telegram</div>
+          <div>Behance</div>
+        </div>
+        <div className="col-span-6 md:col-span-3 font-mono-ed text-[10px] tracking-[0.24em] uppercase text-paper/60 space-y-2 num text-right md:text-left">
+          <div>studio@twear.co</div>
+          <div>+7 (495) 123 45 67</div>
+          <div>© {new Date().getFullYear()} TWear Studio</div>
+        </div>
       </div>
     </div>
   </footer>
 );
 
 const Index = () => (
-  <main className="bg-paper text-ink">
+  <main className="bg-paper text-ink overflow-x-hidden">
     <Header />
     <Hero />
     <Marquee />
     <Philosophy />
+    <Statement />
     <Work />
     <Industries />
     <Quality />
