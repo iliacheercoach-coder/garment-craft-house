@@ -434,10 +434,11 @@ const Quality = () => (
               ["Печать", "Пигментные чернила связаны с волокном. Износостойкость без потери тактильности."],
               ["Контроль", "Проверка на раскрое, пошиве, отделке и упаковке. Четыре точки до отгрузки."],
             ].map(([k, v]) => (
-              <div key={k} className="grid grid-cols-12 gap-4 items-baseline border-b border-hairline pb-8 last:border-0 last:pb-0">
-                <div className="col-span-5 font-display text-3xl md:text-5xl tracking-tightest num">{k}</div>
-                <p className="col-span-7 text-ash leading-[1.5] text-[15px]">{v}</p>
+              <div key={k} className="grid grid-cols-12 gap-x-4 gap-y-3 items-baseline border-b border-hairline pb-8 last:border-0 last:pb-0">
+                <div className="col-span-12 md:col-span-5 font-display text-4xl md:text-5xl tracking-tightest num leading-[0.95]">{k}</div>
+                <p className="col-span-12 md:col-span-7 text-ash leading-[1.5] text-[15px]">{v}</p>
               </div>
+
             ))}
           </div>
         </Reveal>
