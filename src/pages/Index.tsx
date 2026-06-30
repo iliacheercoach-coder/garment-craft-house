@@ -81,7 +81,7 @@ const Header = () => {
           TWEAR
         </a>
         <nav
-          className={`hidden md:flex items-center gap-10 font-mono-ed text-[10px] tracking-[0.24em] uppercase ${
+          className={`hidden lg:flex items-center gap-10 font-mono-ed text-[10px] tracking-[0.24em] uppercase ${
             scrolled ? "text-ink" : "text-paper"
           }`}
         >
@@ -94,7 +94,7 @@ const Header = () => {
         </nav>
         <a
           href="#contact"
-          className={`group font-mono-ed text-[10px] tracking-[0.24em] uppercase ${
+          className={`group font-mono-ed text-[10px] tracking-[0.24em] uppercase whitespace-nowrap ${
             scrolled ? "text-ink" : "text-paper"
           }`}
         >
@@ -102,6 +102,7 @@ const Header = () => {
             Обсудить проект
           </span>
         </a>
+
       </div>
     </header>
   );
