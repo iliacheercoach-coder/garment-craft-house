@@ -81,7 +81,7 @@ const Header = () => {
           TWEAR
         </a>
         <nav
-          className={`hidden md:flex items-center gap-10 font-mono-ed text-[10px] tracking-[0.24em] uppercase ${
+          className={`hidden lg:flex items-center gap-10 font-mono-ed text-[10px] tracking-[0.24em] uppercase ${
             scrolled ? "text-ink" : "text-paper"
           }`}
         >
@@ -94,7 +94,7 @@ const Header = () => {
         </nav>
         <a
           href="#contact"
-          className={`group font-mono-ed text-[10px] tracking-[0.24em] uppercase ${
+          className={`group font-mono-ed text-[10px] tracking-[0.24em] uppercase whitespace-nowrap ${
             scrolled ? "text-ink" : "text-paper"
           }`}
         >
@@ -102,6 +102,7 @@ const Header = () => {
             Обсудить проект
           </span>
         </a>
+
       </div>
     </header>
   );
@@ -195,7 +196,7 @@ const Philosophy = () => (
       <div className="mt-20 md:mt-32 grid grid-cols-12 gap-6">
         <div className="col-span-12 md:col-span-11 md:col-start-1">
           <Reveal delay={100}>
-            <h2 className="font-display tracking-tightest text-[12vw] md:text-[9vw] lg:text-[8vw] leading-[0.86]">
+            <h2 className="font-display tracking-tightest text-[11vw] md:text-[9vw] lg:text-[8vw] leading-[0.95] md:leading-[0.86]">
               Большинство<br />
               производств заставляют<br />
               выбирать между<br />
@@ -206,7 +207,7 @@ const Philosophy = () => (
 
         <div className="col-span-12 md:col-span-4 md:col-start-9 mt-12 md:mt-24">
           <Reveal delay={260}>
-            <p className="font-display text-5xl md:text-6xl tracking-tightest leading-[0.92]">
+            <p className="font-display text-5xl md:text-6xl tracking-tightest leading-[0.95] md:leading-[0.92]">
               Мы&nbsp;— нет.
             </p>
           </Reveal>
@@ -223,7 +224,7 @@ const Philosophy = () => (
             </p>
           </Reveal>
         </div>
-        <div className="col-span-12 md:col-span-4 md:col-start-7 md:col-start-7 mt-2">
+        <div className="col-span-12 md:col-span-4 md:col-start-7 mt-2">
           <Reveal delay={200}>
             <p className="text-base md:text-lg leading-[1.55] text-ash">
               Работаем напрямую с&nbsp;собственным производством, без посредников. Поэтому держим
@@ -232,6 +233,7 @@ const Philosophy = () => (
           </Reveal>
         </div>
       </div>
+
     </div>
   </section>
 );
@@ -432,10 +434,11 @@ const Quality = () => (
               ["Печать", "Пигментные чернила связаны с волокном. Износостойкость без потери тактильности."],
               ["Контроль", "Проверка на раскрое, пошиве, отделке и упаковке. Четыре точки до отгрузки."],
             ].map(([k, v]) => (
-              <div key={k} className="grid grid-cols-12 gap-4 items-baseline border-b border-hairline pb-8 last:border-0 last:pb-0">
-                <div className="col-span-5 font-display text-3xl md:text-5xl tracking-tightest num">{k}</div>
-                <p className="col-span-7 text-ash leading-[1.5] text-[15px]">{v}</p>
+              <div key={k} className="grid grid-cols-12 gap-x-4 gap-y-3 items-baseline border-b border-hairline pb-8 last:border-0 last:pb-0">
+                <div className="col-span-12 md:col-span-5 font-display text-4xl md:text-5xl tracking-tightest num leading-[0.95]">{k}</div>
+                <p className="col-span-12 md:col-span-7 text-ash leading-[1.5] text-[15px]">{v}</p>
               </div>
+
             ))}
           </div>
         </Reveal>
@@ -594,10 +597,11 @@ const Testimonials = () => {
                 <blockquote
                   className={`col-span-12 ${
                     i % 2 === 1 ? "md:col-span-9 md:col-start-4" : "md:col-span-9"
-                  } font-display tracking-tightest text-[9vw] md:text-[5.5vw] leading-[0.92]`}
+                  } font-display tracking-tighter md:tracking-tightest text-[7vw] md:text-[5.5vw] leading-[1.05] md:leading-[0.95]`}
                 >
                   «{t.q}»
                 </blockquote>
+
                 <figcaption
                   className={`col-span-12 ${
                     i % 2 === 1 ? "md:col-span-4 md:col-start-9" : "md:col-span-4"
