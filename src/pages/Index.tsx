@@ -196,7 +196,7 @@ const Philosophy = () => (
       <div className="mt-20 md:mt-32 grid grid-cols-12 gap-6">
         <div className="col-span-12 md:col-span-11 md:col-start-1">
           <Reveal delay={100}>
-            <h2 className="font-display tracking-tightest text-[12vw] md:text-[9vw] lg:text-[8vw] leading-[0.86]">
+            <h2 className="font-display tracking-tightest text-[11vw] md:text-[9vw] lg:text-[8vw] leading-[0.95] md:leading-[0.86]">
               Большинство<br />
               производств заставляют<br />
               выбирать между<br />
@@ -207,7 +207,7 @@ const Philosophy = () => (
 
         <div className="col-span-12 md:col-span-4 md:col-start-9 mt-12 md:mt-24">
           <Reveal delay={260}>
-            <p className="font-display text-5xl md:text-6xl tracking-tightest leading-[0.92]">
+            <p className="font-display text-5xl md:text-6xl tracking-tightest leading-[0.95] md:leading-[0.92]">
               Мы&nbsp;— нет.
             </p>
           </Reveal>
@@ -224,7 +224,7 @@ const Philosophy = () => (
             </p>
           </Reveal>
         </div>
-        <div className="col-span-12 md:col-span-4 md:col-start-7 md:col-start-7 mt-2">
+        <div className="col-span-12 md:col-span-4 md:col-start-7 mt-2">
           <Reveal delay={200}>
             <p className="text-base md:text-lg leading-[1.55] text-ash">
               Работаем напрямую с&nbsp;собственным производством, без посредников. Поэтому держим
@@ -233,6 +233,7 @@ const Philosophy = () => (
           </Reveal>
         </div>
       </div>
+
     </div>
   </section>
 );
