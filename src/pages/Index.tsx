@@ -597,10 +597,11 @@ const Testimonials = () => {
                 <blockquote
                   className={`col-span-12 ${
                     i % 2 === 1 ? "md:col-span-9 md:col-start-4" : "md:col-span-9"
-                  } font-display tracking-tightest text-[9vw] md:text-[5.5vw] leading-[0.92]`}
+                  } font-display tracking-tighter md:tracking-tightest text-[7vw] md:text-[5.5vw] leading-[1.05] md:leading-[0.95]`}
                 >
                   «{t.q}»
                 </blockquote>
+
                 <figcaption
                   className={`col-span-12 ${
                     i % 2 === 1 ? "md:col-span-4 md:col-start-9" : "md:col-span-4"
