@@ -115,3 +115,6 @@
 .animate-fade {
   animation: fadeImage 0.45s ease;
 }
+* {
+  outline: 1px solid red;
+}

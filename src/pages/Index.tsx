@@ -150,7 +150,7 @@ const Hero = () => (
 
     {/* Headline — asymmetric, bottom-left */}
    <div className="container-ed relative z-10 mt-8 md:mt-12">
-  <div className="max-w-[1100px] leading-[0.95]">
+  <div className="max-w-full md:max-w-[1100px] leading-[0.95]">
     <h1
       className="font-display text-paper tracking-tightest text-[15vw] md:text-[10vw] lg:text-[8.5vw] leading-[0.9] animate-rise"
       style={{ animationDelay: "120ms" }}
@@ -261,7 +261,7 @@ const Audience = () => {
   </div>
 
   {/* Правая колонка */}
-  <div className="sticky top-32">
+  <div className="md:sticky md:top-32">
 
     <div className="overflow-hidden rounded-2xl shadow-xl">
 
@@ -333,7 +333,7 @@ const Philosophy = () => (
 
   {/* Правая колонка */}
 
-  <div className="col-span-12 md:col-span-5 md:col-start-8">
+  <div className="col-span-12 md:col-span-5 md:col-start-8 min-w-0"
 
     <Reveal delay={150}>
       <div className="inline-block">
@@ -705,7 +705,7 @@ const Products = () => {
                   </div>
                  <div className="mt-6 border-t border-hairline pt-5">
 
-  <div className="flex items-end justify-between gap-8">
+  <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
 
     <div>
 
@@ -1071,7 +1071,7 @@ const Footer = () => (
           TWEAR
         </div>
 
-        <div className="mt-10 font-mono-ed text-[11px] uppercase tracking-[0.24em] text-paper/60 space-y-4">
+        <div className="mt-10 font-mono-ed text-[10px] break-all uppercase tracking-[0.24em] text-paper/60 space-y-4">
           <div>iliacheercoach@gmail.com</div>
           <div>+7 (999) 225-07-62</div>
           <div>VK</div>
