@@ -163,7 +163,7 @@ const Hero = () => (
 
       <div className="mt-12 grid grid-cols-12 gap-6">
         <div className="col-span-12 md:col-span-5 md:col-start-7 lg:col-span-4 lg:col-start-8">
-         <p className="text-paper/90 text-lg md:text-3xl leading-[1.55] max-w-md font-light"
+         <p className="text-paper/90 text-lg md:text-3xl leading-[1.55] max-w-md font-light">
             Производственная студия для брендов, команд, компаний и&nbsp;событий.
             Делаем вещи, которые носят с&nbsp;удовольствием — и&nbsp;дарят с&nbsp;гордостью.
           </p>
