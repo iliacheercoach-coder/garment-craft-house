@@ -319,13 +319,13 @@ const Philosophy = () => (
 
   {/* Фото */}
 
-  <div className="col-span-12 md:col-span-5 -mt-24">
+  <div className="col-span-12 md:col-span-5 md:-mt-24">
 
     <Reveal delay={100}>
       <img
         src={philosophy}
         alt="TWear"
-        className="w-90% h-[760px] object-cover"
+        className="w-full h-[420px] md:h-[760px] object-cover"
       />
     </Reveal>
 
@@ -346,19 +346,18 @@ const Philosophy = () => (
     </Reveal>
 
     <Reveal delay={200}>
-      <p className="mt-16 text-lg md:text-[20px] leading-[1.8] text-ink">
-        Мы создали TWear, потому что индустрия навязывает ложный выбор.
-        Вещи, которые хорошо выглядят, редко выдерживают ежедневную носку.
-        Те, что служат долго, слишком часто выглядят как компромисс.
-      </p>
+     <p className="mt-10 max-w-full text-base md:text-[20px] leading-[1.8] text-ink break-words">
+  Мы создали TWear, потому что индустрия навязывает ложный выбор.
+  Вещи, которые хорошо выглядят, редко выдерживают ежедневную носку.
+  Те, что служат долго, слишком часто выглядят как компромисс.
+</p>
     </Reveal>
 
     <Reveal delay={300}>
-      <p className="mt-10 text-lg md:text-[20px] leading-[1.8] text-ash">
-        Мы контролируем каждый этап производства — от выбора ткани до упаковки.
-        Поэтому можем удерживать высокий стандарт качества без бессмысленной
-        наценки.
-      </p>
+      <p className="mt-8 max-w-full text-base md:text-[20px] leading-[1.8] text-ash break-words">
+  Мы контролируем каждый этап производства — от выбора ткани до упаковки.
+  Поэтому можем удерживать высокий стандарт качества без бессмысленной наценки.
+</p>
     </Reveal>
 
   </div>
