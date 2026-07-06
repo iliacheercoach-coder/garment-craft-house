@@ -135,7 +135,7 @@ const Hero = () => (
     <div className="absolute inset-0 bg-gradient-to-b from-ink/30 via-transparent to-ink/55" />
 
     {/* Top meta */}
-    <div className="container-ed relative z-10 pt-28">
+    <div className="container-ed relative z-10 pt-16 md:pt-28">
       <div className="flex items-start justify-between text-paper/80 font-mono-ed text-[10px] tracking-[0.24em] uppercase animate-rise num">
         <div>
           <div>TWear Studio</div>
@@ -149,10 +149,10 @@ const Hero = () => (
     </div>
 
     {/* Headline — asymmetric, bottom-left */}
-   <div className="container-ed relative z-10 mt-12">
-  <div className="max-w-[1100px] text-[120px] leading-[0.95]">
+   <div className="container-ed relative z-10 mt-8 md:mt-12">
+  <div className="max-w-[1100px] leading-[0.95]">
     <h1
-      className="font-display text-paper tracking-tightest text-[13vw] md:text-[10vw] lg:text-[8.5vw] animate-rise"
+      className="font-display text-paper tracking-tightest text-[15vw] md:text-[10vw] lg:text-[8.5vw] leading-[0.9] animate-rise"
       style={{ animationDelay: "120ms" }}
     >
       Одежда,<br />
@@ -163,13 +163,13 @@ const Hero = () => (
 
       <div className="mt-12 grid grid-cols-12 gap-6">
         <div className="col-span-12 md:col-span-5 md:col-start-7 lg:col-span-4 lg:col-start-8">
-         <p className="text-paper/90 text-2xl md:text-3xl leading-[1.45] max-w-xl font-light">
+         <p className="text-paper/90 text-lg md:text-3xl leading-[1.55] max-w-md font-light"
             Производственная студия для брендов, команд, компаний и&nbsp;событий.
             Делаем вещи, которые носят с&nbsp;удовольствием — и&nbsp;дарят с&nbsp;гордостью.
           </p>
           <a
             href="#contact"
-            className="group mt-8 inline-flex items-center gap-5 border border-paper/40 px-12 py-6 text-paper font-mono-ed text-[16px] tracking-[0.24em] uppercase hover:bg-paper hover:text-ink transition-all duration-500"
+            className="group mt-8 inline-flex w-full md:w-auto justify-center items-center gap-5 border border-paper/40 px-10 py-5 text-paper font-mono-ed text-[12px] md:text-[16px] tracking-[0.24em] uppercase hover:bg-paper hover:text-ink transition-all duration-500"
           >
             Обсудить проект
             <span className="inline-block transition-transform duration-500 group-hover:translate-x-1">→</span>
@@ -824,13 +824,13 @@ const Contact = () => {
 
   return (
     <section id="contact" className="bg-ink text-paper">
-      <div className="container-ed py-40 md:py-56">
+      <div className="container-ed py-24 md:py-56">
        
 
         <div className="mt-16 grid grid-cols-12 gap-8">
           <div className="col-span-12 md:col-span-7">
             <Reveal delay={100}>
-              <h2 className="font-display tracking-tightest text-[14vw] md:text-[9vw] leading-[0.86]">
+              <h2 className="font-display tracking-tightest text-[15vw] md:text-[9vw] leading-[0.9]">
                 Расскажите
 о вашем
 проекте.
@@ -855,7 +855,7 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className="mt-24 md:mt-32">
+        <div className="mt-16 md:mt-32">
           <Reveal delay={120}>
             {sent ? (
               <div className="border-t border-paper/20 pt-16">
@@ -989,7 +989,7 @@ const Contact = () => {
                   <span className="block font-mono-ed text-[15px] tracking-[0.24em] uppercase text-paper/50">Расскажите подробнее *</span>
                   <textarea
                     required
-                    rows={6}
+                    rows={4}
                     maxLength={1200}
                     value={form.message}
                     onChange={update("message")}
@@ -1017,13 +1017,13 @@ focus:border-[#E53935]
                   />
                 </label>
 
-                <div className="pt-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6 col-span-12">
+                <div className="pt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6 col-span-12">
                   <span className="font-mono-ed text-[15px] tracking-[0.24em] uppercase text-paper/40">
                     Ответ в течение одного рабочего дня
                   </span>
                   <button
                     type="submit"
-                    className="group inline-flex items-center gap-5 self-start border border-paper/40 px-10 py-6 font-mono-ed text-[11px] tracking-[0.24em] uppercase hover:bg-paper hover:text-ink transition-all duration-500"
+                    className="group inline-flex w-full md:w-auto justify-center items-center gap-5 border border-paper/40 px-10 py-5 font-mono-ed text-[11px] tracking-[0.24em] uppercase hover:bg-paper hover:text-ink transition-all duration-500"
                   >
                     Отправить заявку
                     <span className="inline-block transition-transform duration-500 group-hover:translate-x-1">→</span>
@@ -1043,21 +1043,48 @@ focus:border-[#E53935]
 const Footer = () => (
   <footer className="bg-ink text-paper border-t border-paper/15">
     <div className="container-ed py-16">
-      <div className="grid grid-cols-12 gap-8 items-end">
-        <div className="col-span-12 md:col-span-6">
-          <div className="font-display text-[18vw] md:text-[10vw] tracking-tightest leading-[0.86]">TWEAR</div>
+
+      {/* Desktop */}
+      <div className="hidden md:grid grid-cols-12 gap-8 items-end">
+        <div className="col-span-6">
+          <div className="font-display text-[10vw] tracking-tightest leading-[0.86]">
+            TWEAR
+          </div>
         </div>
-        <div className="col-span-6 md:col-span-3 font-mono-ed text-[10px] tracking-[0.24em] uppercase text-paper/60 space-y-2">
-         
-         
-          
+
+        <div className="col-span-3 font-mono-ed text-[10px] tracking-[0.24em] uppercase text-paper/60 space-y-2">
+          <div>Instagram</div>
+          <div>Telegram</div>
+          <div>Behance</div>
         </div>
-        <div className="col-span-6 md:col-span-3 font-mono-ed text-[15px] tracking-[0.24em] uppercase text-paper/60 space-y-2 num text-right md:text-left">
-          <div>Iliacheercoach@gmail.com</div>
-          <div>+7 (999) 225 07 62</div>
-          <div>© TWear Studio</div>
+
+        <div className="col-span-3 font-mono-ed text-[10px] tracking-[0.24em] uppercase text-paper/60 space-y-2">
+          <div>iliacheercoach@gmail.com</div>
+          <div>+7 (999) 225-07-62</div>
+          <div>© {new Date().getFullYear()} TWear</div>
         </div>
       </div>
+
+      {/* Mobile */}
+      <div className="md:hidden">
+
+        <div className="font-display text-7xl leading-none tracking-tightest">
+          TWEAR
+        </div>
+
+        <div className="mt-10 font-mono-ed text-[11px] uppercase tracking-[0.24em] text-paper/60 space-y-4">
+          <div>iliacheercoach@gmail.com</div>
+          <div>+7 (999) 225-07-62</div>
+          <div>VK</div>
+          <div>Санкт-Петербург</div>
+        </div>
+
+        <div className="mt-10 border-t border-paper/15 pt-6 font-mono-ed text-[10px] uppercase tracking-[0.24em] text-paper/40">
+          © {new Date().getFullYear()} TWear
+        </div>
+
+      </div>
+
     </div>
   </footer>
 );
