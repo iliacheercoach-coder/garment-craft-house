@@ -315,7 +315,7 @@ const Philosophy = () => (
 
       </div>
 
-      <div className="mt-28 md:mt-40 flex flex-col gap-10">
+      <div className="mt-28 md:mt-40 flex flex-col md:grid md:grid-cols-12 gap-10 items-start">
 
   {/* Фото */}
 
@@ -325,7 +325,7 @@ const Philosophy = () => (
      <img
   src={philosophy}
   alt="TWear"
-  className="w-[92%] mx-auto h-[300px] md:w-full md:h-[760px] object-cover rounded-lg"
+  className="block w-full max-w-[520px] mx-auto md:max-w-none h-[300px] md:h-[760px] object-cover"
 />
     </Reveal>
 
