@@ -124,7 +124,7 @@ const Header = () => {
 /* ——— Hero ——— Asymmetric, magazine cover */
 
 const Hero = () => (
-  <section id="top" className="relative min-h-[100svh] w-full overflow-hidden bg-ink">
+  <section id="top" className="relative min-h-[100svh] w-full overflow-x-hidden bg-ink">
     <img
       src={hero}
       alt="Модель в премиальной хлопковой футболке кремового цвета"
@@ -149,7 +149,7 @@ const Hero = () => (
     </div>
 
     {/* Headline — asymmetric, bottom-left */}
-   <div className="container-ed relative z-10 mt-8 md:mt-12">
+   <div className="container-ed relative z-10 mt-8 md:mt-12 overflow-hidden">
   <div className="max-w-full md:max-w-[1100px] leading-[0.95]">
     <h1
       className="font-display text-paper tracking-tightest text-[15vw] md:text-[10vw] lg:text-[8.5vw] leading-[0.9] animate-rise"
@@ -161,8 +161,8 @@ const Hero = () => (
     </h1>
   </div>
 
-      <div className="mt-12 grid grid-cols-12 gap-6 min-w-0">
-        <div className="col-span-12 md:col-span-5 md:col-start-7 lg:col-span-4 lg:col-start-8 min-w-0">
+      <div className="mt-12 grid grid-cols-12 gap-6">
+        <div className="col-span-12 md:col-span-5 md:col-start-7 lg:col-span-4 lg:col-start-8">
          <p className="text-paper/90 text-lg md:text-3xl leading-[1.55] max-w-md font-light">
             Производственная студия для брендов, команд, компаний и&nbsp;событий.
             Делаем вещи, которые носят с&nbsp;удовольствием — и&nbsp;дарят с&nbsp;гордостью.
