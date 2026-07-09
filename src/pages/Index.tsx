@@ -847,9 +847,16 @@ const Contact = () => {
 прикрепите их после отправки заявки.
               </p>
               <div className="mt-12 space-y-2 font-mono-ed text-[11px] tracking-[0.24em] uppercase text-paper/60 num">
-                <div>Iliacheercoach@gmail.com</div>
+                <div>TitansWear@yandex.ru</div>
                 <div>+7 (999) 225 07 62</div>
-                <div>VK</div>
+               <a
+  href="https://vk.com/titanswear"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="hover:text-white transition-colors duration-300"
+>
+  VK
+</a>
                 <div>Санкт-Петербург</div>
               </div>
             </Reveal>
