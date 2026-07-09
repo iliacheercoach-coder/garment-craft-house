@@ -1060,7 +1060,7 @@ const Footer = () => (
         </div>
 
         <div className="col-span-3 font-mono-ed text-[10px] tracking-[0.24em] uppercase text-paper/60 space-y-2">
-          <div>iliacheercoach@gmail.com</div>
+          <div>TitansWear@yandex.ru</div>
           <div>+7 (999) 225-07-62</div>
           <div>© {new Date().getFullYear()} TWear</div>
         </div>
@@ -1074,7 +1074,7 @@ const Footer = () => (
         </div>
 
         <div className="mt-10 font-mono-ed text-[10px] break-all uppercase tracking-[0.24em] text-paper/60 space-y-4">
-          <div>iliacheercoach@gmail.com</div>
+          <div>TitansWear@yandex.ru</div>
           <div>+7 (999) 225-07-62</div>
           <div>VK</div>
           <div>Санкт-Петербург</div>
