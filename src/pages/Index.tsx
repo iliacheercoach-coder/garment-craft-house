@@ -1092,16 +1092,17 @@ const Index = () => (
   <main className="bg-paper text-ink overflow-x-hidden">
     <Header />
     <Hero />
-    <Audience />
-    <Philosophy />
-    <Statement />
-    <Work />
-    <Quality />
-    <Process />
-    <Products />
-    <FAQ />
-    <Contact />
-    <Footer />
+
+    {/* <Audience /> */}
+    {/* <Philosophy /> */}
+    {/* <Statement /> */}
+    {/* <Work /> */}
+    {/* <Quality /> */}
+    {/* <Process /> */}
+    {/* <Products /> */}
+    {/* <FAQ /> */}
+    {/* <Contact /> */}
+    {/* <Footer /> */}
   </main>
 );
 
