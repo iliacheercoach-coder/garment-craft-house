@@ -149,7 +149,7 @@ const Hero = () => (
     </div>
 
     {/* Headline — asymmetric, bottom-left */}
-   <div className="container-ed relative z-10 mt-8 md:mt-12 overflow-hidden">
+   <div className="container-ed relative z-10 mt-8 md:mt-12">
   <div className="max-w-full md:max-w-[1100px] leading-[0.95]">
     <h1
       className="font-display text-paper tracking-tightest text-[15vw] md:text-[10vw] lg:text-[8.5vw] leading-[0.9] animate-rise"
@@ -319,7 +319,7 @@ const Philosophy = () => (
 
   {/* Фото */}
 
-  <div className="col-span-12 md:col-span-5 md:-mt-24">
+  <div className="col-span-12 md:col-span-5">
 
     <Reveal delay={100}>
       <img
