@@ -322,11 +322,11 @@ const Philosophy = () => (
   <div className="col-span-12 md:col-span-5">
 
     <Reveal delay={100}>
-      <img
-        src={philosophy}
-        alt="TWear"
-        className="w-full h-[420px] md:h-[760px] object-cover"
-      />
+     <img
+  src={philosophy}
+  alt="TWear"
+  className="w-[92%] mx-auto h-[300px] md:w-full md:h-[760px] object-cover rounded-lg"
+/>
     </Reveal>
 
   </div>
