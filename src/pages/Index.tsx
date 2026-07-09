@@ -492,8 +492,8 @@ const Quality = () => (
     </div>
 
     {/* Fabric — large left, data right */}
-    <div className="grid grid-cols-1 md:grid-cols-12 gap-px bg-hairline">
-      <div className="md:col-span-7 bg-paper relative aspect-[4/5] md:aspect-auto md:min-h-[820px] overflow-hidden">
+    <div className="grid grid-cols-1 md:grid-cols-12 gap-px bg-hairline overflow-hidden">
+      <div className="md:col-span-7 min-w-0 bg-paper relative aspect-[4/5] md:aspect-auto md:min-h-[820px] overflow-hidden">
        <img
   src={fabric}
   alt="Макро плетения премиального хлопка"
@@ -501,7 +501,7 @@ const Quality = () => (
   className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1800ms] ease-out hover:scale-[1.04]"
 />
       </div>
-      <div className="md:col-span-5 bg-paper p-10 md:p-20 sticky top-28 self-start">
+      <div className="md:col-span-5 bg-paper p-10 md:p-20 md:sticky md:top-28 self-start">
         <Reveal>
           <div className="space-y-12">
             {[
