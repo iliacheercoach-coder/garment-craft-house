@@ -1076,7 +1076,14 @@ const Footer = () => (
         <div className="mt-10 font-mono-ed text-[10px] break-all uppercase tracking-[0.24em] text-paper/60 space-y-4">
           <div>TitansWear@yandex.ru</div>
           <div>+7 (999) 225-07-62</div>
-          <div>VK</div>
+          <a
+  href="https://vk.com/titanswear"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="hover:text-white transition-colors duration-300"
+>
+  VK
+</a>
           <div>Санкт-Петербург</div>
         </div>
 
