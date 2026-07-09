@@ -315,7 +315,7 @@ const Philosophy = () => (
 
       </div>
 
-      <div className="mt-28 md:mt-40 grid grid-cols-12 gap-10 items-start">
+      <div className="mt-28 md:mt-40 flex flex-col gap-10">
 
   {/* Фото */}
 
