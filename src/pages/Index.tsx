@@ -333,34 +333,34 @@ const Philosophy = () => (
 
   {/* Правая колонка */}
 
-  <div className="col-span-12 md:col-span-5 md:col-start-8 min-w-0"
+ <div className="col-span-12 md:col-span-5 md:col-start-8 min-w-0">
 
-    <Reveal delay={150}>
-      <div className="inline-block">
-        <p className="font-display text-5xl md:text-6xl tracking-tightest leading-none">
-          Мы — нет.
-        </p>
+  <Reveal delay={150}>
+    <div className="inline-block">
+      <h3 className="font-display text-5xl md:text-6xl tracking-tightest leading-none">
+        Мы — нет.
+      </h3>
 
-        <div className="mt-5 h-[2px] w-full bg-[#D62B2B]" />
-      </div>
-    </Reveal>
+      <div className="mt-5 h-[2px] w-full bg-[#D62B2B]" />
+    </div>
+  </Reveal>
 
-    <Reveal delay={200}>
-     <p className="mt-10 max-w-full text-base md:text-[20px] leading-[1.8] text-ink break-words">
-  Мы создали TWear, потому что индустрия навязывает ложный выбор.
-  Вещи, которые хорошо выглядят, редко выдерживают ежедневную носку.
-  Те, что служат долго, слишком часто выглядят как компромисс.
-</p>
-    </Reveal>
+  <Reveal delay={200}>
+    <p className="mt-10 text-base md:text-[20px] leading-[1.8] text-ink max-w-full break-words">
+      Мы создали TWear, потому что индустрия навязывает ложный выбор.
+      Вещи, которые хорошо выглядят, редко выдерживают ежедневную носку.
+      Те, что служат долго, слишком часто выглядят как компромисс.
+    </p>
+  </Reveal>
 
-    <Reveal delay={300}>
-      <p className="mt-8 max-w-full text-base md:text-[20px] leading-[1.8] text-ash break-words">
-  Мы контролируем каждый этап производства — от выбора ткани до упаковки.
-  Поэтому можем удерживать высокий стандарт качества без бессмысленной наценки.
-</p>
-    </Reveal>
+  <Reveal delay={300}>
+    <p className="mt-8 text-base md:text-[20px] leading-[1.8] text-ash max-w-full break-words">
+      Мы контролируем каждый этап производства — от выбора ткани до упаковки.
+      Поэтому можем удерживать высокий стандарт качества без бессмысленной наценки.
+    </p>
+  </Reveal>
 
-  </div>
+</div>
 
 </div>
 
@@ -568,7 +568,7 @@ const Process = () => {
   [
     "02",
     "Образец",
-    "Соглоасовываем дизайн, цвет и пошив."
+    "Согласовываем дизайн, цвет и пошив."
   ],
   [
     "03",
