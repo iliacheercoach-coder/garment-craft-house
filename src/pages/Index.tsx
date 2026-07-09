@@ -345,20 +345,20 @@ const Philosophy = () => (
     </div>
   </Reveal>
 
-  <Reveal delay={200}>
+  
     <p className="mt-10 text-base md:text-[20px] leading-[1.8] text-ink max-w-full break-words">
       Мы создали TWear, потому что индустрия навязывает ложный выбор.
       Вещи, которые хорошо выглядят, редко выдерживают ежедневную носку.
       Те, что служат долго, слишком часто выглядят как компромисс.
     </p>
-  </Reveal>
+  
 
-  <Reveal delay={300}>
+  
     <p className="mt-8 text-base md:text-[20px] leading-[1.8] text-ash max-w-full break-words">
       Мы контролируем каждый этап производства — от выбора ткани до упаковки.
       Поэтому можем удерживать высокий стандарт качества без бессмысленной наценки.
     </p>
-  </Reveal>
+  
 
 </div>
 
@@ -1092,8 +1092,6 @@ const Index = () => (
   <main className="bg-paper text-ink overflow-x-hidden">
     <Header />
     <Hero />
-
-    {/*
     <Audience />
     <Philosophy />
     <Statement />
@@ -1104,7 +1102,6 @@ const Index = () => (
     <FAQ />
     <Contact />
     <Footer />
-    */}
   </main>
 );
 
