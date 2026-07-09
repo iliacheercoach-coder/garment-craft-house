@@ -1093,16 +1093,18 @@ const Index = () => (
     <Header />
     <Hero />
 
-    {/* <Audience /> */}
-    {/* <Philosophy /> */}
-    {/* <Statement /> */}
-    {/* <Work /> */}
-    {/* <Quality /> */}
-    {/* <Process /> */}
-    {/* <Products /> */}
-    {/* <FAQ /> */}
-    {/* <Contact /> */}
-    {/* <Footer /> */}
+    {/*
+    <Audience />
+    <Philosophy />
+    <Statement />
+    <Work />
+    <Quality />
+    <Process />
+    <Products />
+    <FAQ />
+    <Contact />
+    <Footer />
+    */}
   </main>
 );
 
