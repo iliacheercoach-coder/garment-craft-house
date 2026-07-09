@@ -107,7 +107,7 @@ const Header = () => {
         </nav>
         <a
           href="#contact"
-          className={`group font-mono-ed text-[15px] tracking-[0.14em] uppercase whitespace-nowrap ${
+          className={`group font-mono-ed text-[11px] md:text-[15px] tracking-[0.14em] uppercase ${
             scrolled ? "text-ink" : "text-paper"
           }`}
         >
@@ -829,7 +829,7 @@ const Contact = () => {
         <div className="mt-16 grid grid-cols-12 gap-8">
           <div className="col-span-12 md:col-span-7">
             <Reveal delay={100}>
-              <h2 className="font-display tracking-tightest text-[15vw] md:text-[9vw] leading-[0.9]">
+              <h2 className="font-display tracking-tightest text-[13vw] md:text-[9vw] leading-[0.9]">
                 Расскажите
 о вашем
 проекте.
@@ -1067,7 +1067,7 @@ const Footer = () => (
       {/* Mobile */}
       <div className="md:hidden">
 
-        <div className="font-display text-7xl leading-none tracking-tightest">
+        <div className="font-display text-6xl leading-none tracking-tightest break-words">
           TWEAR
         </div>
 
