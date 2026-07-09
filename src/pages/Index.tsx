@@ -86,7 +86,7 @@ const Header = () => {
         scrolled ? "bg-paper/90 backdrop-blur-md border-b border-hairline" : "bg-transparent"
       }`}
     >
-      <div className="container-ed flex h-20 items-center justify-between">
+      <div className="container-ed flex h-20 items-center justify-between min-w-0">
        <a href="#top" className="font-display text-4xl tracking-tightest">
   <span className="text-red-600">T</span>
   <span className={scrolled ? "text-ink" : "text-paper"}>
@@ -161,8 +161,8 @@ const Hero = () => (
     </h1>
   </div>
 
-      <div className="mt-12 grid grid-cols-12 gap-6">
-        <div className="col-span-12 md:col-span-5 md:col-start-7 lg:col-span-4 lg:col-start-8">
+      <div className="mt-12 grid grid-cols-12 gap-6 min-w-0">
+        <div className="col-span-12 md:col-span-5 md:col-start-7 lg:col-span-4 lg:col-start-8 min-w-0">
          <p className="text-paper/90 text-lg md:text-3xl leading-[1.55] max-w-md font-light">
             Производственная студия для брендов, команд, компаний и&nbsp;событий.
             Делаем вещи, которые носят с&nbsp;удовольствием — и&nbsp;дарят с&nbsp;гордостью.
